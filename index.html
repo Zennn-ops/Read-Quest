@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1a0a2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ReadQuest">
+<meta name="application-name" content="ReadQuest">
+<title>ReadQuest: The Lost Library</title>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlJlYWRRdWVzdDogVGhlIExvc3QgTGlicmFyeSIsICJzaG9ydF9uYW1lIjogIlJlYWRRdWVzdCIsICJkZXNjcmlwdGlvbiI6ICJBIHJlYWRpbmcgYWR2ZW50dXJlIFJQRyBcdTIwMTMgZGVmZWF0IGVuZW1pZXMgYnkgYW5zd2VyaW5nIGNvbXByZWhlbnNpb24gcXVlc3Rpb25zISIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQtcHJpbWFyeSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZDA2MTgiLCAidGhlbWVfY29sb3IiOiAiIzFhMGEyZSIsICJjYXRlZ29yaWVzIjogWyJnYW1lcyIsICJlZHVjYXRpb24iXSwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmclMjB4bWxucyUzRCUyN2h0dHAlM0EvL3d3dy53My5vcmcvMjAwMC9zdmclMjclMjB2aWV3Qm94JTNEJTI3MCUyMDAlMjAxOTIlMjAxOTIlMjclM0UlMjAlMjAlM0NkZWZzJTNFJTIwJTIwJTIwJTNDcmFkaWFsR3JhZGllbnQlMjBpZCUzRCUyN2JnJTI3JTIwY3glM0QlMjc1MCUyNSUyNyUyMGN5JTNEJTI3NDUlMjUlMjclMjByJTNEJTI3NTUlMjUlMjclM0UlMjAlMjAlMjAlMjAlM0NzdG9wJTIwb2Zmc2V0JTNEJTI3MCUyNSUyNyUyMHN0b3AtY29sb3IlM0QlMjclMjUyMzJkMWI2OSUyNy8lM0UlMjAlMjAlMjAlMjAlM0NzdG9wJTIwb2Zmc2V0JTNEJTI3MTAwJTI1JTI3JTIwc3RvcC1jb2xvciUzRCUyNyUyNTIzMGQwNjE4JTI3LyUzRSUyMCUyMCUyMCUzQy9yYWRpYWxHcmFkaWVudCUzRSUyMCUyMCUzQy9kZWZzJTNFJTIwJTIwJTNDcmVjdCUyMHdpZHRoJTNEJTI3MTkyJTI3JTIwaGVpZ2h0JTNEJTI3MTkyJTI3JTIwcnglM0QlMjczNiUyNyUyMGZpbGwlM0QlMjd1cmwlMjglMjUyM2JnJTI5JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3NiUyNyUyMHklM0QlMjc2JTI3JTIwd2lkdGglM0QlMjcxODAlMjclMjBoZWlnaHQlM0QlMjcxODAlMjclMjByeCUzRCUyNzMwJTI3JTIwZmlsbCUzRCUyN25vbmUlMjclMjBzdHJva2UlM0QlMjclMjUyMzdjM2FlZCUyNyUyMHN0cm9rZS13aWR0aCUzRCUyNzMlMjclMjBvcGFjaXR5JTNEJTI3MC42JTI3LyUzRSUyMCUyMCUzQ2NpcmNsZSUyMGN4JTNEJTI3MzAlMjclMjBjeSUzRCUyNzMwJTI3JTIwciUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmYlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ2NpcmNsZSUyMGN4JTNEJTI3MTU4JTI3JTIwY3klM0QlMjcyMiUyNyUyMHIlM0QlMjcxLjUlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmYlMjclMjBvcGFjaXR5JTNEJTI3MC40JTI3LyUzRSUyMCUyMCUzQ2NpcmNsZSUyMGN4JTNEJTI3MTc1JTI3JTIwY3klM0QlMjc1MiUyNyUyMHIlM0QlMjcyJTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZmJTI3JTIwb3BhY2l0eSUzRCUyNzAuNCUyNy8lM0UlMjAlMjAlM0NjaXJjbGUlMjBjeCUzRCUyNzE4JTI3JTIwY3klM0QlMjc3NSUyNyUyMHIlM0QlMjcxLjUlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmYlMjclMjBvcGFjaXR5JTNEJTI3MC40JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3NTElMjclMjB5JTNEJTI3ODIlMjclMjB3aWR0aCUzRCUyNzQxJTI3JTIwaGVpZ2h0JTNEJTI3NTMlMjclMjByeCUzRCUyNzMlMjclMjBmaWxsJTNEJTI3JTI1MjM0ZjQ2ZTUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxMDAlMjclMjB5JTNEJTI3ODIlMjclMjB3aWR0aCUzRCUyNzQxJTI3JTIwaGVpZ2h0JTNEJTI3NTMlMjclMjByeCUzRCUyNzMlMjclMjBmaWxsJTNEJTI3JTI1MjM3YzNhZWQlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjc5MiUyNyUyMHklM0QlMjc4MCUyNyUyMHdpZHRoJTNEJTI3OCUyNyUyMGhlaWdodCUzRCUyNzU3JTI3JTIwcnglM0QlMjczJTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZkNzAwJTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3NTclMjclMjB5JTNEJTI3OTMlMjclMjB3aWR0aCUzRCUyNzI5JTI3JTIwaGVpZ2h0JTNEJTI3NCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2E3OGJmYSUyNyUyMG9wYWNpdHklM0QlMjcwLjclMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjc1NyUyNyUyMHklM0QlMjcxMDMlMjclMjB3aWR0aCUzRCUyNzI0JTI3JTIwaGVpZ2h0JTNEJTI3NCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2E3OGJmYSUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjc1NyUyNyUyMHklM0QlMjcxMTMlMjclMjB3aWR0aCUzRCUyNzI3JTI3JTIwaGVpZ2h0JTNEJTI3NCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2E3OGJmYSUyNyUyMG9wYWNpdHklM0QlMjcwLjYlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxMDUlMjclMjB5JTNEJTI3OTMlMjclMjB3aWR0aCUzRCUyNzI5JTI3JTIwaGVpZ2h0JTNEJTI3NCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2M0YjVmZCUyNyUyMG9wYWNpdHklM0QlMjcwLjclMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxMDUlMjclMjB5JTNEJTI3MTAzJTI3JTIwd2lkdGglM0QlMjcyMiUyNyUyMGhlaWdodCUzRCUyNzQlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNjNGI1ZmQlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MTA1JTI3JTIweSUzRCUyNzExMyUyNyUyMHdpZHRoJTNEJTI3MjclMjclMjBoZWlnaHQlM0QlMjc0JTI3JTIwcnglM0QlMjcyJTI3JTIwZmlsbCUzRCUyNyUyNTIzYzRiNWZkJTI3JTIwb3BhY2l0eSUzRCUyNzAuNiUyNy8lM0UlMjAlMjAlM0Nwb2x5Z29uJTIwcG9pbnRzJTNEJTI3OTYlMkMyMiUyMDc4JTJDNzAlMjAxMTQlMkM3MCUyNyUyMGZpbGwlM0QlMjclMjUyMzdjM2FlZCUyNy8lM0UlMjAlMjAlM0Nwb2x5Z29uJTIwcG9pbnRzJTNEJTI3OTYlMkMyMiUyMDc4JTJDNzAlMjAxMTQlMkM3MCUyNyUyMGZpbGwlM0QlMjdub25lJTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBzdHJva2Utd2lkdGglM0QlMjcyJTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3NzMlMjclMjB5JTNEJTI3NjglMjclMjB3aWR0aCUzRCUyNzQ2JTI3JTIwaGVpZ2h0JTNEJTI3OSUyNyUyMHJ4JTNEJTI3NCUyNyUyMGZpbGwlM0QlMjclMjUyMzRmNDZlNSUyNyUyMHN0cm9rZSUzRCUyNyUyNTIzZmZkNzAwJTI3JTIwc3Ryb2tlLXdpZHRoJTNEJTI3MS41JTI3LyUzRSUyMCUyMCUzQ3RleHQlMjB4JTNEJTI3OTElMjclMjB5JTNEJTI3NTglMjclMjBmb250LXNpemUlM0QlMjcxMCUyNyUyMHRleHQtYW5jaG9yJTNEJTI3bWlkZGxlJTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZkNzAwJTI3JTNFJUUyJTlDJUE2JTNDL3RleHQlM0UlMjAlMjAlM0NjaXJjbGUlMjBjeCUzRCUyNzE0MCUyNyUyMGN5JTNEJTI3NTUlMjclMjByJTNEJTI3NSUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNy8lM0UlMjAlMjAlM0NjaXJjbGUlMjBjeCUzRCUyNzE0MCUyNyUyMGN5JTNEJTI3NTUlMjclMjByJTNEJTI3MyUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZiUyNy8lM0UlMjAlMjAlM0NsaW5lJTIweDElM0QlMjcxNDAlMjclMjB5MSUzRCUyNzQ2JTI3JTIweDIlM0QlMjcxNDAlMjclMjB5MiUzRCUyNzQyJTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBzdHJva2Utd2lkdGglM0QlMjcyJTI3JTIwc3Ryb2tlLWxpbmVjYXAlM0QlMjdyb3VuZCUyNy8lM0UlMjAlMjAlM0NsaW5lJTIweDElM0QlMjcxNDklMjclMjB5MSUzRCUyNzU1JTI3JTIweDIlM0QlMjcxNTMlMjclMjB5MiUzRCUyNzU1JTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBzdHJva2Utd2lkdGglM0QlMjcyJTI3JTIwc3Ryb2tlLWxpbmVjYXAlM0QlMjdyb3VuZCUyNy8lM0UlMjAlMjAlM0NsaW5lJTIweDElM0QlMjcxNDYlMjclMjB5MSUzRCUyNzQ5JTI3JTIweDIlM0QlMjcxNDklMjclMjB5MiUzRCUyNzQ2JTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBzdHJva2Utd2lkdGglM0QlMjcyJTI3JTIwc3Ryb2tlLWxpbmVjYXAlM0QlMjdyb3VuZCUyNy8lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzUxJTI3JTIweSUzRCUyNzE0OCUyNyUyMHdpZHRoJTNEJTI3OTAlMjclMjBoZWlnaHQlM0QlMjc2JTI3JTIwcnglM0QlMjczJTI3JTIwZmlsbCUzRCUyNyUyNTIzN2MzYWVkJTI3JTIwb3BhY2l0eSUzRCUyNzAuNSUyNy8lM0UlMjAlMjAlM0N0ZXh0JTIweCUzRCUyNzk2JTI3JTIweSUzRCUyNzE3MCUyNyUyMGZvbnQtZmFtaWx5JTNEJTI3bW9ub3NwYWNlJTI3JTIwZm9udC1zaXplJTNEJTI3MTAlMjclMjBmb250LXdlaWdodCUzRCUyN2JvbGQlMjclMjB0ZXh0LWFuY2hvciUzRCUyN21pZGRsZSUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMGxldHRlci1zcGFjaW5nJTNEJTI3MSUyNyUzRVJRJTNDL3RleHQlM0UlMjAlM0Mvc3ZnJTNFIiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn0sIHsic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmclMjB4bWxucyUzRCUyN2h0dHAlM0EvL3d3dy53My5vcmcvMjAwMC9zdmclMjclMjB2aWV3Qm94JTNEJTI3MCUyMDAlMjA1MTIlMjA1MTIlMjclM0UlMjAlMjAlM0NkZWZzJTNFJTIwJTIwJTIwJTNDcmFkaWFsR3JhZGllbnQlMjBpZCUzRCUyN2JnJTI3JTIwY3glM0QlMjc1MCUyNSUyNyUyMGN5JTNEJTI3NDUlMjUlMjclMjByJTNEJTI3NTUlMjUlMjclM0UlMjAlMjAlMjAlMjAlM0NzdG9wJTIwb2Zmc2V0JTNEJTI3MCUyNSUyNyUyMHN0b3AtY29sb3IlM0QlMjclMjUyMzJkMWI2OSUyNy8lM0UlMjAlMjAlMjAlMjAlM0NzdG9wJTIwb2Zmc2V0JTNEJTI3MTAwJTI1JTI3JTIwc3RvcC1jb2xvciUzRCUyNyUyNTIzMGQwNjE4JTI3LyUzRSUyMCUyMCUyMCUzQy9yYWRpYWxHcmFkaWVudCUzRSUyMCUyMCUyMCUzQ3JhZGlhbEdyYWRpZW50JTIwaWQlM0QlMjdnbG93JTI3JTIwY3glM0QlMjc1MCUyNSUyNyUyMGN5JTNEJTI3NTAlMjUlMjclMjByJTNEJTI3NTAlMjUlMjclM0UlMjAlMjAlMjAlMjAlM0NzdG9wJTIwb2Zmc2V0JTNEJTI3MCUyNSUyNyUyMHN0b3AtY29sb3IlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMHN0b3Atb3BhY2l0eSUzRCUyNzAuNCUyNy8lM0UlMjAlMjAlMjAlMjAlM0NzdG9wJTIwb2Zmc2V0JTNEJTI3MTAwJTI1JTI3JTIwc3RvcC1jb2xvciUzRCUyNyUyNTIzZmZkNzAwJTI3JTIwc3RvcC1vcGFjaXR5JTNEJTI3MCUyNy8lM0UlMjAlMjAlMjAlM0MvcmFkaWFsR3JhZGllbnQlM0UlMjAlMjAlM0MvZGVmcyUzRSUyMCUyMCUzQyUyMS0tJTIwQmFja2dyb3VuZCUyMC0tJTNFJTIwJTIwJTNDcmVjdCUyMHdpZHRoJTNEJTI3NTEyJTI3JTIwaGVpZ2h0JTNEJTI3NTEyJTI3JTIwcnglM0QlMjc5NiUyNyUyMGZpbGwlM0QlMjd1cmwlMjglMjUyM2JnJTI5JTI3LyUzRSUyMCUyMCUzQyUyMS0tJTIwUGl4ZWwlMjBib3JkZXIlMjBmcmFtZSUyMC0tJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxNiUyNyUyMHklM0QlMjcxNiUyNyUyMHdpZHRoJTNEJTI3NDgwJTI3JTIwaGVpZ2h0JTNEJTI3NDgwJTI3JTIwcnglM0QlMjc4MCUyNyUyMGZpbGwlM0QlMjdub25lJTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjM3YzNhZWQlMjclMjBzdHJva2Utd2lkdGglM0QlMjc4JTI3JTIwb3BhY2l0eSUzRCUyNzAuNiUyNy8lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzI4JTI3JTIweSUzRCUyNzI4JTI3JTIwd2lkdGglM0QlMjc0NTYlMjclMjBoZWlnaHQlM0QlMjc0NTYlMjclMjByeCUzRCUyNzcwJTI3JTIwZmlsbCUzRCUyN25vbmUlMjclMjBzdHJva2UlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMHN0cm9rZS13aWR0aCUzRCUyNzMlMjclMjBvcGFjaXR5JTNEJTI3MC4zJTI3LyUzRSUyMCUyMCUzQyUyMS0tJTIwU3RhcnMlMjBiZyUyMC0tJTNFJTIwJTIwJTNDY2lyY2xlJTIwY3glM0QlMjc4MCUyNyUyMGN5JTNEJTI3ODAlMjclMjByJTNEJTI3MyUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZiUyNyUyMG9wYWNpdHklM0QlMjcwLjYlMjcvJTNFJTIwJTIwJTNDY2lyY2xlJTIwY3glM0QlMjc0MjAlMjclMjBjeSUzRCUyNzYwJTI3JTIwciUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmYlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ2NpcmNsZSUyMGN4JTNEJTI3NDYwJTI3JTIwY3klM0QlMjcxNDAlMjclMjByJTNEJTI3MyUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZiUyNyUyMG9wYWNpdHklM0QlMjcwLjQlMjcvJTNFJTIwJTIwJTNDY2lyY2xlJTIwY3glM0QlMjc1MCUyNyUyMGN5JTNEJTI3MjAwJTI3JTIwciUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmYlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ2NpcmNsZSUyMGN4JTNEJTI3NDcwJTI3JTIwY3klM0QlMjczODAlMjclMjByJTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZiUyNyUyMG9wYWNpdHklM0QlMjcwLjQlMjcvJTNFJTIwJTIwJTNDY2lyY2xlJTIwY3glM0QlMjcxMDAlMjclMjBjeSUzRCUyNzQyMCUyNyUyMHIlM0QlMjczJTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZmJTI3JTIwb3BhY2l0eSUzRCUyNzAuMyUyNy8lM0UlMjAlMjAlM0MlMjEtLSUyMEJvb2slMjBnbG93JTIwLS0lM0UlMjAlMjAlM0NlbGxpcHNlJTIwY3glM0QlMjcyNTYlMjclMjBjeSUzRCUyNzMwMCUyNyUyMHJ4JTNEJTI3MTMwJTI3JTIwcnklM0QlMjc2MCUyNyUyMGZpbGwlM0QlMjd1cmwlMjglMjUyM2dsb3clMjklMjcvJTNFJTIwJTIwJTNDJTIxLS0lMjBPcGVuJTIwQm9vayUyMGJvZHklMjAtLSUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MTM2JTI3JTIweSUzRCUyNzIyMCUyNyUyMHdpZHRoJTNEJTI3MTEwJTI3JTIwaGVpZ2h0JTNEJTI3MTQwJTI3JTIwcnglM0QlMjc4JTI3JTIwZmlsbCUzRCUyNyUyNTIzNGY0NmU1JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MTM2JTI3JTIweSUzRCUyNzIyMCUyNyUyMHdpZHRoJTNEJTI3MTEwJTI3JTIwaGVpZ2h0JTNEJTI3MTQwJTI3JTIwcnglM0QlMjc4JTI3JTIwZmlsbCUzRCUyN25vbmUlMjclMjBzdHJva2UlM0QlMjclMjUyMzdjM2FlZCUyNyUyMHN0cm9rZS13aWR0aCUzRCUyNzMlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcyNjYlMjclMjB5JTNEJTI3MjIwJTI3JTIwd2lkdGglM0QlMjcxMTAlMjclMjBoZWlnaHQlM0QlMjcxNDAlMjclMjByeCUzRCUyNzglMjclMjBmaWxsJTNEJTI3JTI1MjM3YzNhZWQlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcyNjYlMjclMjB5JTNEJTI3MjIwJTI3JTIwd2lkdGglM0QlMjcxMTAlMjclMjBoZWlnaHQlM0QlMjcxNDAlMjclMjByeCUzRCUyNzglMjclMjBmaWxsJTNEJTI3bm9uZSUyNyUyMHN0cm9rZSUzRCUyNyUyNTIzNGY0NmU1JTI3JTIwc3Ryb2tlLXdpZHRoJTNEJTI3MyUyNy8lM0UlMjAlMjAlM0MlMjEtLSUyMFNwaW5lJTIwLS0lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzI0NiUyNyUyMHklM0QlMjcyMTUlMjclMjB3aWR0aCUzRCUyNzIwJTI3JTIwaGVpZ2h0JTNEJTI3MTUwJTI3JTIwcnglM0QlMjc0JTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZkNzAwJTI3LyUzRSUyMCUyMCUzQyUyMS0tJTIwUGFnZSUyMGxpbmVzJTIwbGVmdCUyMC0tJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxNTAlMjclMjB5JTNEJTI3MjQ4JTI3JTIwd2lkdGglM0QlMjc3OCUyNyUyMGhlaWdodCUzRCUyNzUlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNhNzhiZmElMjclMjBvcGFjaXR5JTNEJTI3MC43JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MTUwJTI3JTIweSUzRCUyNzI2NCUyNyUyMHdpZHRoJTNEJTI3NjglMjclMjBoZWlnaHQlM0QlMjc1JTI3JTIwcnglM0QlMjcyJTI3JTIwZmlsbCUzRCUyNyUyNTIzYTc4YmZhJTI3JTIwb3BhY2l0eSUzRCUyNzAuNSUyNy8lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzE1MCUyNyUyMHklM0QlMjcyODAlMjclMjB3aWR0aCUzRCUyNzc0JTI3JTIwaGVpZ2h0JTNEJTI3NSUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2E3OGJmYSUyNyUyMG9wYWNpdHklM0QlMjcwLjclMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxNTAlMjclMjB5JTNEJTI3Mjk2JTI3JTIwd2lkdGglM0QlMjc2MCUyNyUyMGhlaWdodCUzRCUyNzUlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNhNzhiZmElMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MTUwJTI3JTIweSUzRCUyNzMxMiUyNyUyMHdpZHRoJTNEJTI3NzIlMjclMjBoZWlnaHQlM0QlMjc1JTI3JTIwcnglM0QlMjcyJTI3JTIwZmlsbCUzRCUyNyUyNTIzYTc4YmZhJTI3JTIwb3BhY2l0eSUzRCUyNzAuNCUyNy8lM0UlMjAlMjAlM0MlMjEtLSUyMFBhZ2UlMjBsaW5lcyUyMHJpZ2h0JTIwLS0lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzI4MCUyNyUyMHklM0QlMjcyNDglMjclMjB3aWR0aCUzRCUyNzc4JTI3JTIwaGVpZ2h0JTNEJTI3NSUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2M0YjVmZCUyNyUyMG9wYWNpdHklM0QlMjcwLjclMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcyODAlMjclMjB5JTNEJTI3MjY0JTI3JTIwd2lkdGglM0QlMjc2NSUyNyUyMGhlaWdodCUzRCUyNzUlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNjNGI1ZmQlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MjgwJTI3JTIweSUzRCUyNzI4MCUyNyUyMHdpZHRoJTNEJTI3NzQlMjclMjBoZWlnaHQlM0QlMjc1JTI3JTIwcnglM0QlMjcyJTI3JTIwZmlsbCUzRCUyNyUyNTIzYzRiNWZkJTI3JTIwb3BhY2l0eSUzRCUyNzAuNyUyNy8lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzI4MCUyNyUyMHklM0QlMjcyOTYlMjclMjB3aWR0aCUzRCUyNzU1JTI3JTIwaGVpZ2h0JTNEJTI3NSUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2M0YjVmZCUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcyODAlMjclMjB5JTNEJTI3MzEyJTI3JTIwd2lkdGglM0QlMjc3MCUyNyUyMGhlaWdodCUzRCUyNzUlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNjNGI1ZmQlMjclMjBvcGFjaXR5JTNEJTI3MC40JTI3LyUzRSUyMCUyMCUzQyUyMS0tJTIwV2l6YXJkJTIwaGF0JTIwLS0lM0UlMjAlMjAlM0Nwb2x5Z29uJTIwcG9pbnRzJTNEJTI3MjU2JTJDNjAlMjAyMTAlMkMxODUlMjAzMDIlMkMxODUlMjclMjBmaWxsJTNEJTI3JTI1MjM3YzNhZWQlMjcvJTNFJTIwJTIwJTNDcG9seWdvbiUyMHBvaW50cyUzRCUyNzI1NiUyQzYwJTIwMjEwJTJDMTg1JTIwMzAyJTJDMTg1JTI3JTIwZmlsbCUzRCUyN25vbmUlMjclMjBzdHJva2UlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMHN0cm9rZS13aWR0aCUzRCUyNzMlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjcxOTYlMjclMjB5JTNEJTI3MTgyJTI3JTIwd2lkdGglM0QlMjcxMjAlMjclMjBoZWlnaHQlM0QlMjcyMiUyNyUyMHJ4JTNEJTI3MTElMjclMjBmaWxsJTNEJTI3JTI1MjM0ZjQ2ZTUlMjclMjBzdHJva2UlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMHN0cm9rZS13aWR0aCUzRCUyNzIlMjcvJTNFJTIwJTIwJTNDJTIxLS0lMjBIYXQlMjBzdGFycyUyMC0tJTNFJTIwJTIwJTNDdGV4dCUyMHglM0QlMjcyMjglMjclMjB5JTNEJTI3MTU1JTI3JTIwZm9udC1zaXplJTNEJTI3MjIlMjclMjB0ZXh0LWFuY2hvciUzRCUyN21pZGRsZSUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjklMjclM0UlRTIlOUMlQTYlM0MvdGV4dCUzRSUyMCUyMCUzQ3RleHQlMjB4JTNEJTI3MjY1JTI3JTIweSUzRCUyNzEzMCUyNyUyMGZvbnQtc2l6ZSUzRCUyNzE0JTI3JTIwdGV4dC1hbmNob3IlM0QlMjdtaWRkbGUlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBvcGFjaXR5JTNEJTI3MC43JTI3JTNFJUUyJTk4JTg1JTNDL3RleHQlM0UlMjAlMjAlM0MlMjEtLSUyMFdhbmQlMjB3aXRoJTIwc3BhcmslMjAtLSUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MzU1JTI3JTIweSUzRCUyNzE1MCUyNyUyMHdpZHRoJTNEJTI3OCUyNyUyMGhlaWdodCUzRCUyNzkwJTI3JTIwcnglM0QlMjc0JTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZkNzAwJTI3JTIwdHJhbnNmb3JtJTNEJTI3cm90YXRlJTI4MzAlMkMzNTUlMkMxNTAlMjklMjcvJTNFJTIwJTIwJTNDY2lyY2xlJTIwY3glM0QlMjczNzQlMjclMjBjeSUzRCUyNzE0OCUyNyUyMHIlM0QlMjcxMiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjklMjcvJTNFJTIwJTIwJTNDY2lyY2xlJTIwY3glM0QlMjczNzQlMjclMjBjeSUzRCUyNzE0OCUyNyUyMHIlM0QlMjc3JTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZmJTI3LyUzRSUyMCUyMCUzQyUyMS0tJTIwU3BhcmslMjBsaW5lcyUyMC0tJTNFJTIwJTIwJTNDbGluZSUyMHgxJTNEJTI3Mzc0JTI3JTIweTElM0QlMjcxMjglMjclMjB4MiUzRCUyNzM3NCUyNyUyMHkyJTNEJTI3MTE4JTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBzdHJva2Utd2lkdGglM0QlMjczJTI3JTIwc3Ryb2tlLWxpbmVjYXAlM0QlMjdyb3VuZCUyNy8lM0UlMjAlMjAlM0NsaW5lJTIweDElM0QlMjczOTQlMjclMjB5MSUzRCUyNzE0OCUyNyUyMHgyJTNEJTI3NDA0JTI3JTIweTIlM0QlMjcxNDglMjclMjBzdHJva2UlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMHN0cm9rZS13aWR0aCUzRCUyNzMlMjclMjBzdHJva2UtbGluZWNhcCUzRCUyN3JvdW5kJTI3LyUzRSUyMCUyMCUzQ2xpbmUlMjB4MSUzRCUyNzM4NyUyNyUyMHkxJTNEJTI3MTM1JTI3JTIweDIlM0QlMjczOTQlMjclMjB5MiUzRCUyNzEyOCUyNyUyMHN0cm9rZSUzRCUyNyUyNTIzZmZkNzAwJTI3JTIwc3Ryb2tlLXdpZHRoJTNEJTI3MyUyNyUyMHN0cm9rZS1saW5lY2FwJTNEJTI3cm91bmQlMjcvJTNFJTIwJTIwJTNDbGluZSUyMHgxJTNEJTI3Mzg3JTI3JTIweTElM0QlMjcxNjElMjclMjB4MiUzRCUyNzM5NCUyNyUyMHkyJTNEJTI3MTY4JTI3JTIwc3Ryb2tlJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBzdHJva2Utd2lkdGglM0QlMjczJTI3JTIwc3Ryb2tlLWxpbmVjYXAlM0QlMjdyb3VuZCUyNy8lM0UlMjAlMjAlM0MlMjEtLSUyMEJvdHRvbSUyMHBpeGVsJTIwZGVjb3JhdGlvbnMlMjAtLSUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MTM2JTI3JTIweSUzRCUyNzM3NiUyNyUyMHdpZHRoJTNEJTI3MjQwJTI3JTIwaGVpZ2h0JTNEJTI3MTYlMjclMjByeCUzRCUyNzQlMjclMjBmaWxsJTNEJTI3JTI1MjM3YzNhZWQlMjclMjBvcGFjaXR5JTNEJTI3MC40JTI3LyUzRSUyMCUyMCUzQyUyMS0tJTIwUlElMjBsZXR0ZXJzJTIwcGl4ZWwtc3R5bGUlMjAtLSUzRSUyMCUyMCUzQ3RleHQlMjB4JTNEJTI3MjU2JTI3JTIweSUzRCUyNzQxMCUyNyUyMGZvbnQtZmFtaWx5JTNEJTI3bW9ub3NwYWNlJTI3JTIwZm9udC1zaXplJTNEJTI3MjglMjclMjBmb250LXdlaWdodCUzRCUyN2JvbGQlMjclMjB0ZXh0LWFuY2hvciUzRCUyN21pZGRsZSUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMGxldHRlci1zcGFjaW5nJTNEJTI3NCUyNyUyMG9wYWNpdHklM0QlMjcwLjklMjclM0VSRUFEUVVFU1QlM0MvdGV4dCUzRSUyMCUyMCUzQyUyMS0tJTIwUGl4ZWwlMjBjb3JuZXIlMjBhY2NlbnRzJTIwLS0lM0UlMjAlMjAlM0NyZWN0JTIweCUzRCUyNzM2JTI3JTIweSUzRCUyNzM2JTI3JTIwd2lkdGglM0QlMjcyMCUyNyUyMGhlaWdodCUzRCUyNzUlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3MzYlMjclMjB5JTNEJTI3MzYlMjclMjB3aWR0aCUzRCUyNzUlMjclMjBoZWlnaHQlM0QlMjcyMCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjc0NTYlMjclMjB5JTNEJTI3MzYlMjclMjB3aWR0aCUzRCUyNzIwJTI3JTIwaGVpZ2h0JTNEJTI3NSUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjc0NzElMjclMjB5JTNEJTI3MzYlMjclMjB3aWR0aCUzRCUyNzUlMjclMjBoZWlnaHQlM0QlMjcyMCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjczNiUyNyUyMHklM0QlMjc0NzElMjclMjB3aWR0aCUzRCUyNzIwJTI3JTIwaGVpZ2h0JTNEJTI3NSUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjczNiUyNyUyMHklM0QlMjc0NTYlMjclMjB3aWR0aCUzRCUyNzUlMjclMjBoZWlnaHQlM0QlMjcyMCUyNyUyMHJ4JTNEJTI3MiUyNyUyMGZpbGwlM0QlMjclMjUyM2ZmZDcwMCUyNyUyMG9wYWNpdHklM0QlMjcwLjUlMjcvJTNFJTIwJTIwJTNDcmVjdCUyMHglM0QlMjc0NTYlMjclMjB5JTNEJTI3NDcxJTI3JTIwd2lkdGglM0QlMjcyMCUyNyUyMGhlaWdodCUzRCUyNzUlMjclMjByeCUzRCUyNzIlMjclMjBmaWxsJTNEJTI3JTI1MjNmZmQ3MDAlMjclMjBvcGFjaXR5JTNEJTI3MC41JTI3LyUzRSUyMCUyMCUzQ3JlY3QlMjB4JTNEJTI3NDcxJTI3JTIweSUzRCUyNzQ1NiUyNyUyMHdpZHRoJTNEJTI3NSUyNyUyMGhlaWdodCUzRCUyNzIwJTI3JTIwcnglM0QlMjcyJTI3JTIwZmlsbCUzRCUyNyUyNTIzZmZkNzAwJTI3JTIwb3BhY2l0eSUzRCUyNzAuNSUyNy8lM0UlMjAlM0Mvc3ZnJTNFIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20512%20512%27%3E%20%20%3Cdefs%3E%20%20%20%3CradialGradient%20id%3D%27bg%27%20cx%3D%2750%25%27%20cy%3D%2745%25%27%20r%3D%2755%25%27%3E%20%20%20%20%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%25232d1b69%27/%3E%20%20%20%20%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%25230d0618%27/%3E%20%20%20%3C/radialGradient%3E%20%20%20%3CradialGradient%20id%3D%27glow%27%20cx%3D%2750%25%27%20cy%3D%2750%25%27%20r%3D%2750%25%27%3E%20%20%20%20%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2523ffd700%27%20stop-opacity%3D%270.4%27/%3E%20%20%20%20%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%2523ffd700%27%20stop-opacity%3D%270%27/%3E%20%20%20%3C/radialGradient%3E%20%20%3C/defs%3E%20%20%3C%21--%20Background%20--%3E%20%20%3Crect%20width%3D%27512%27%20height%3D%27512%27%20rx%3D%2796%27%20fill%3D%27url%28%2523bg%29%27/%3E%20%20%3C%21--%20Pixel%20border%20frame%20--%3E%20%20%3Crect%20x%3D%2716%27%20y%3D%2716%27%20width%3D%27480%27%20height%3D%27480%27%20rx%3D%2780%27%20fill%3D%27none%27%20stroke%3D%27%25237c3aed%27%20stroke-width%3D%278%27%20opacity%3D%270.6%27/%3E%20%20%3Crect%20x%3D%2728%27%20y%3D%2728%27%20width%3D%27456%27%20height%3D%27456%27%20rx%3D%2770%27%20fill%3D%27none%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%273%27%20opacity%3D%270.3%27/%3E%20%20%3C%21--%20Stars%20bg%20--%3E%20%20%3Ccircle%20cx%3D%2780%27%20cy%3D%2780%27%20r%3D%273%27%20fill%3D%27%2523fff%27%20opacity%3D%270.6%27/%3E%20%20%3Ccircle%20cx%3D%27420%27%20cy%3D%2760%27%20r%3D%272%27%20fill%3D%27%2523fff%27%20opacity%3D%270.5%27/%3E%20%20%3Ccircle%20cx%3D%27460%27%20cy%3D%27140%27%20r%3D%273%27%20fill%3D%27%2523fff%27%20opacity%3D%270.4%27/%3E%20%20%3Ccircle%20cx%3D%2750%27%20cy%3D%27200%27%20r%3D%272%27%20fill%3D%27%2523fff%27%20opacity%3D%270.5%27/%3E%20%20%3Ccircle%20cx%3D%27470%27%20cy%3D%27380%27%20r%3D%272%27%20fill%3D%27%2523fff%27%20opacity%3D%270.4%27/%3E%20%20%3Ccircle%20cx%3D%27100%27%20cy%3D%27420%27%20r%3D%273%27%20fill%3D%27%2523fff%27%20opacity%3D%270.3%27/%3E%20%20%3C%21--%20Book%20glow%20--%3E%20%20%3Cellipse%20cx%3D%27256%27%20cy%3D%27300%27%20rx%3D%27130%27%20ry%3D%2760%27%20fill%3D%27url%28%2523glow%29%27/%3E%20%20%3C%21--%20Open%20Book%20body%20--%3E%20%20%3Crect%20x%3D%27136%27%20y%3D%27220%27%20width%3D%27110%27%20height%3D%27140%27%20rx%3D%278%27%20fill%3D%27%25234f46e5%27/%3E%20%20%3Crect%20x%3D%27136%27%20y%3D%27220%27%20width%3D%27110%27%20height%3D%27140%27%20rx%3D%278%27%20fill%3D%27none%27%20stroke%3D%27%25237c3aed%27%20stroke-width%3D%273%27/%3E%20%20%3Crect%20x%3D%27266%27%20y%3D%27220%27%20width%3D%27110%27%20height%3D%27140%27%20rx%3D%278%27%20fill%3D%27%25237c3aed%27/%3E%20%20%3Crect%20x%3D%27266%27%20y%3D%27220%27%20width%3D%27110%27%20height%3D%27140%27%20rx%3D%278%27%20fill%3D%27none%27%20stroke%3D%27%25234f46e5%27%20stroke-width%3D%273%27/%3E%20%20%3C%21--%20Spine%20--%3E%20%20%3Crect%20x%3D%27246%27%20y%3D%27215%27%20width%3D%2720%27%20height%3D%27150%27%20rx%3D%274%27%20fill%3D%27%2523ffd700%27/%3E%20%20%3C%21--%20Page%20lines%20left%20--%3E%20%20%3Crect%20x%3D%27150%27%20y%3D%27248%27%20width%3D%2778%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.7%27/%3E%20%20%3Crect%20x%3D%27150%27%20y%3D%27264%27%20width%3D%2768%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27150%27%20y%3D%27280%27%20width%3D%2774%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.7%27/%3E%20%20%3Crect%20x%3D%27150%27%20y%3D%27296%27%20width%3D%2760%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27150%27%20y%3D%27312%27%20width%3D%2772%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.4%27/%3E%20%20%3C%21--%20Page%20lines%20right%20--%3E%20%20%3Crect%20x%3D%27280%27%20y%3D%27248%27%20width%3D%2778%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.7%27/%3E%20%20%3Crect%20x%3D%27280%27%20y%3D%27264%27%20width%3D%2765%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27280%27%20y%3D%27280%27%20width%3D%2774%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.7%27/%3E%20%20%3Crect%20x%3D%27280%27%20y%3D%27296%27%20width%3D%2755%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27280%27%20y%3D%27312%27%20width%3D%2770%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.4%27/%3E%20%20%3C%21--%20Wizard%20hat%20--%3E%20%20%3Cpolygon%20points%3D%27256%2C60%20210%2C185%20302%2C185%27%20fill%3D%27%25237c3aed%27/%3E%20%20%3Cpolygon%20points%3D%27256%2C60%20210%2C185%20302%2C185%27%20fill%3D%27none%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%273%27/%3E%20%20%3Crect%20x%3D%27196%27%20y%3D%27182%27%20width%3D%27120%27%20height%3D%2722%27%20rx%3D%2711%27%20fill%3D%27%25234f46e5%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%272%27/%3E%20%20%3C%21--%20Hat%20stars%20--%3E%20%20%3Ctext%20x%3D%27228%27%20y%3D%27155%27%20font-size%3D%2722%27%20text-anchor%3D%27middle%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.9%27%3E%E2%9C%A6%3C/text%3E%20%20%3Ctext%20x%3D%27265%27%20y%3D%27130%27%20font-size%3D%2714%27%20text-anchor%3D%27middle%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.7%27%3E%E2%98%85%3C/text%3E%20%20%3C%21--%20Wand%20with%20spark%20--%3E%20%20%3Crect%20x%3D%27355%27%20y%3D%27150%27%20width%3D%278%27%20height%3D%2790%27%20rx%3D%274%27%20fill%3D%27%2523ffd700%27%20transform%3D%27rotate%2830%2C355%2C150%29%27/%3E%20%20%3Ccircle%20cx%3D%27374%27%20cy%3D%27148%27%20r%3D%2712%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.9%27/%3E%20%20%3Ccircle%20cx%3D%27374%27%20cy%3D%27148%27%20r%3D%277%27%20fill%3D%27%2523fff%27/%3E%20%20%3C%21--%20Spark%20lines%20--%3E%20%20%3Cline%20x1%3D%27374%27%20y1%3D%27128%27%20x2%3D%27374%27%20y2%3D%27118%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27/%3E%20%20%3Cline%20x1%3D%27394%27%20y1%3D%27148%27%20x2%3D%27404%27%20y2%3D%27148%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27/%3E%20%20%3Cline%20x1%3D%27387%27%20y1%3D%27135%27%20x2%3D%27394%27%20y2%3D%27128%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27/%3E%20%20%3Cline%20x1%3D%27387%27%20y1%3D%27161%27%20x2%3D%27394%27%20y2%3D%27168%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27/%3E%20%20%3C%21--%20Bottom%20pixel%20decorations%20--%3E%20%20%3Crect%20x%3D%27136%27%20y%3D%27376%27%20width%3D%27240%27%20height%3D%2716%27%20rx%3D%274%27%20fill%3D%27%25237c3aed%27%20opacity%3D%270.4%27/%3E%20%20%3C%21--%20RQ%20letters%20pixel-style%20--%3E%20%20%3Ctext%20x%3D%27256%27%20y%3D%27410%27%20font-family%3D%27monospace%27%20font-size%3D%2728%27%20font-weight%3D%27bold%27%20text-anchor%3D%27middle%27%20fill%3D%27%2523ffd700%27%20letter-spacing%3D%274%27%20opacity%3D%270.9%27%3EREADQUEST%3C/text%3E%20%20%3C%21--%20Pixel%20corner%20accents%20--%3E%20%20%3Crect%20x%3D%2736%27%20y%3D%2736%27%20width%3D%2720%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%2736%27%20y%3D%2736%27%20width%3D%275%27%20height%3D%2720%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27456%27%20y%3D%2736%27%20width%3D%2720%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27471%27%20y%3D%2736%27%20width%3D%275%27%20height%3D%2720%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%2736%27%20y%3D%27471%27%20width%3D%2720%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%2736%27%20y%3D%27456%27%20width%3D%275%27%20height%3D%2720%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27456%27%20y%3D%27471%27%20width%3D%2720%27%20height%3D%275%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27471%27%20y%3D%27456%27%20width%3D%275%27%20height%3D%2720%27%20rx%3D%272%27%20fill%3D%27%2523ffd700%27%20opacity%3D%270.5%27/%3E%20%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20192%20192%27%3E%20%20%3Cdefs%3E%20%20%20%3CradialGradient%20id%3D%27bg%27%20cx%3D%2750%25%27%20cy%3D%2745%25%27%20r%3D%2755%25%27%3E%20%20%20%20%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%25232d1b69%27/%3E%20%20%20%20%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%25230d0618%27/%3E%20%20%20%3C/radialGradient%3E%20%20%3C/defs%3E%20%20%3Crect%20width%3D%27192%27%20height%3D%27192%27%20rx%3D%2736%27%20fill%3D%27url%28%2523bg%29%27/%3E%20%20%3Crect%20x%3D%276%27%20y%3D%276%27%20width%3D%27180%27%20height%3D%27180%27%20rx%3D%2730%27%20fill%3D%27none%27%20stroke%3D%27%25237c3aed%27%20stroke-width%3D%273%27%20opacity%3D%270.6%27/%3E%20%20%3Ccircle%20cx%3D%2730%27%20cy%3D%2730%27%20r%3D%272%27%20fill%3D%27%2523fff%27%20opacity%3D%270.5%27/%3E%20%20%3Ccircle%20cx%3D%27158%27%20cy%3D%2722%27%20r%3D%271.5%27%20fill%3D%27%2523fff%27%20opacity%3D%270.4%27/%3E%20%20%3Ccircle%20cx%3D%27175%27%20cy%3D%2752%27%20r%3D%272%27%20fill%3D%27%2523fff%27%20opacity%3D%270.4%27/%3E%20%20%3Ccircle%20cx%3D%2718%27%20cy%3D%2775%27%20r%3D%271.5%27%20fill%3D%27%2523fff%27%20opacity%3D%270.4%27/%3E%20%20%3Crect%20x%3D%2751%27%20y%3D%2782%27%20width%3D%2741%27%20height%3D%2753%27%20rx%3D%273%27%20fill%3D%27%25234f46e5%27/%3E%20%20%3Crect%20x%3D%27100%27%20y%3D%2782%27%20width%3D%2741%27%20height%3D%2753%27%20rx%3D%273%27%20fill%3D%27%25237c3aed%27/%3E%20%20%3Crect%20x%3D%2792%27%20y%3D%2780%27%20width%3D%278%27%20height%3D%2757%27%20rx%3D%273%27%20fill%3D%27%2523ffd700%27/%3E%20%20%3Crect%20x%3D%2757%27%20y%3D%2793%27%20width%3D%2729%27%20height%3D%274%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.7%27/%3E%20%20%3Crect%20x%3D%2757%27%20y%3D%27103%27%20width%3D%2724%27%20height%3D%274%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%2757%27%20y%3D%27113%27%20width%3D%2727%27%20height%3D%274%27%20rx%3D%272%27%20fill%3D%27%2523a78bfa%27%20opacity%3D%270.6%27/%3E%20%20%3Crect%20x%3D%27105%27%20y%3D%2793%27%20width%3D%2729%27%20height%3D%274%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.7%27/%3E%20%20%3Crect%20x%3D%27105%27%20y%3D%27103%27%20width%3D%2722%27%20height%3D%274%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.5%27/%3E%20%20%3Crect%20x%3D%27105%27%20y%3D%27113%27%20width%3D%2727%27%20height%3D%274%27%20rx%3D%272%27%20fill%3D%27%2523c4b5fd%27%20opacity%3D%270.6%27/%3E%20%20%3Cpolygon%20points%3D%2796%2C22%2078%2C70%20114%2C70%27%20fill%3D%27%25237c3aed%27/%3E%20%20%3Cpolygon%20points%3D%2796%2C22%2078%2C70%20114%2C70%27%20fill%3D%27none%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%272%27/%3E%20%20%3Crect%20x%3D%2773%27%20y%3D%2768%27%20width%3D%2746%27%20height%3D%279%27%20rx%3D%274%27%20fill%3D%27%25234f46e5%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%271.5%27/%3E%20%20%3Ctext%20x%3D%2791%27%20y%3D%2758%27%20font-size%3D%2710%27%20text-anchor%3D%27middle%27%20fill%3D%27%2523ffd700%27%3E%E2%9C%A6%3C/text%3E%20%20%3Ccircle%20cx%3D%27140%27%20cy%3D%2755%27%20r%3D%275%27%20fill%3D%27%2523ffd700%27/%3E%20%20%3Ccircle%20cx%3D%27140%27%20cy%3D%2755%27%20r%3D%273%27%20fill%3D%27%2523fff%27/%3E%20%20%3Cline%20x1%3D%27140%27%20y1%3D%2746%27%20x2%3D%27140%27%20y2%3D%2742%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27/%3E%20%20%3Cline%20x1%3D%27149%27%20y1%3D%2755%27%20x2%3D%27153%27%20y2%3D%2755%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27/%3E%20%20%3Cline%20x1%3D%27146%27%20y1%3D%2749%27%20x2%3D%27149%27%20y2%3D%2746%27%20stroke%3D%27%2523ffd700%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27/%3E%20%20%3Crect%20x%3D%2751%27%20y%3D%27148%27%20width%3D%2790%27%20height%3D%276%27%20rx%3D%273%27%20fill%3D%27%25237c3aed%27%20opacity%3D%270.5%27/%3E%20%20%3Ctext%20x%3D%2796%27%20y%3D%27170%27%20font-family%3D%27monospace%27%20font-size%3D%2710%27%20font-weight%3D%27bold%27%20text-anchor%3D%27middle%27%20fill%3D%27%2523ffd700%27%20letter-spacing%3D%271%27%3ERQ%3C/text%3E%20%3C/svg%3E">
+<style>
+/* Fonts loaded via SW cache; fallback to system monospace/sans if offline */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#0d0618;font-family:'Nunito',sans-serif;overscroll-behavior:none;-webkit-overflow-scrolling:touch;}
+body{position:fixed;top:0;left:0;right:0;bottom:0;}
+
+/* ── SCREENS ── */
+.screen{display:none;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;}
+.screen.active{display:flex;}
+
+/* ── TITLE ── */
+#titleScreen{background:radial-gradient(ellipse at 50% 40%,#2d1b69 0%,#0d0618 70%);position:relative;overflow:hidden;}
+.t-star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 2s infinite alternate;}
+@keyframes twinkle{from{opacity:.1}to{opacity:.9}}
+.t-hero{font-size:80px;animation:heroFloat 3s ease-in-out infinite;margin-bottom:12px;}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.t-title{font-family:'Press Start 2P',monospace;font-size:clamp(16px,4vw,28px);color:#FFD700;text-shadow:0 0 20px #ffd70066,4px 4px 0 #6b3a00;text-align:center;line-height:1.6;margin-bottom:8px;animation:titlePulse 2s ease-in-out infinite;}
+@keyframes titlePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+.t-sub{font-size:12px;color:#a78bfa;letter-spacing:2px;text-transform:uppercase;margin-bottom:36px;}
+.t-btn{font-family:'Press Start 2P',monospace;font-size:clamp(9px,2vw,13px);padding:16px 36px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;cursor:pointer;box-shadow:0 6px 0 #3b1a8a,0 0 24px #7c3aed88;animation:btnGlow 2s ease-in-out infinite;transition:transform .1s;}
+.t-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #3b1a8a;}
+@keyframes btnGlow{0%,100%{box-shadow:0 6px 0 #3b1a8a,0 0 24px #7c3aed88}50%{box-shadow:0 6px 0 #3b1a8a,0 0 40px #7c3aedcc}}
+.t-hint{font-size:11px;color:#4b3a6b;margin-top:20px;}
+
+/* ── HOW TO PLAY SCREEN ── */
+#howScreen{background:radial-gradient(ellipse at 50% 30%,#2d1b69 0%,#0d0618 70%);overflow-y:auto;padding:20px 16px 30px;justify-content:flex-start;}
+.how-title{font-family:'Press Start 2P',monospace;font-size:clamp(11px,2.5vw,16px);color:#FFD700;text-shadow:0 0 16px #ffd70055,3px 3px 0 #6b3a00;text-align:center;margin-bottom:6px;margin-top:8px;}
+.how-sub{font-size:12px;color:#a78bfa;letter-spacing:1.5px;text-transform:uppercase;text-align:center;margin-bottom:20px;}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;width:100%;max-width:600px;margin-bottom:20px;}
+.how-card{background:rgba(255,255,255,.05);border:1.5px solid rgba(167,139,250,.2);border-radius:16px;padding:16px 14px;display:flex;gap:12px;align-items:flex-start;animation:cardIn .4s ease both;}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.how-card:nth-child(1){animation-delay:.05s;}
+.how-card:nth-child(2){animation-delay:.12s;}
+.how-card:nth-child(3){animation-delay:.19s;}
+.how-card:nth-child(4){animation-delay:.26s;}
+.how-card:nth-child(5){animation-delay:.33s;}
+.how-card:nth-child(6){animation-delay:.40s;}
+.how-icon{font-size:32px;flex-shrink:0;line-height:1;}
+.how-text{}
+.how-label{font-family:'Press Start 2P',monospace;font-size:8px;color:#FFD700;margin-bottom:6px;line-height:1.5;}
+.how-desc{font-size:12px;color:#C8B6FF;line-height:1.65;font-weight:700;}
+.how-tip{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.25);border-radius:10px;padding:10px 14px;font-size:12px;color:#FFF9C4;font-weight:700;line-height:1.6;width:100%;max-width:600px;margin-bottom:20px;text-align:center;}
+.how-tip span{color:#FFD700;font-family:'Press Start 2P',monospace;font-size:8px;}
+.how-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.how-start{font-family:'Press Start 2P',monospace;font-size:clamp(9px,2vw,12px);padding:14px 30px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;cursor:pointer;box-shadow:0 6px 0 #3b1a8a,0 0 20px #7c3aed88;animation:btnGlow 2s ease-in-out infinite;transition:transform .1s;}
+.how-start:active{transform:translateY(3px);box-shadow:0 3px 0 #3b1a8a;}
+.how-back{font-family:'Press Start 2P',monospace;font-size:clamp(8px,1.5vw,10px);padding:14px 20px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2);color:#a78bfa;border-radius:8px;cursor:pointer;transition:background .2s;}
+.how-back:active{background:rgba(255,255,255,.12);}
+
+/* ── GAME SCREEN ── */
+#gameScreen{justify-content:flex-start;}
+.g-hud{width:100%;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.6);border-bottom:2px solid #2d1b69;flex-shrink:0;gap:8px;}
+.g-name{font-family:'Press Start 2P',monospace;font-size:8px;color:#FFD700;}
+.g-hearts{display:flex;gap:3px;}
+.g-heart{font-size:16px;transition:transform .2s;}
+.g-heart.lost{filter:grayscale(1) opacity(.3);}
+.g-floor{font-family:'Press Start 2P',monospace;font-size:7px;color:#a78bfa;background:rgba(124,58,237,.2);border:1px solid #7c3aed44;padding:4px 8px;border-radius:4px;}
+.g-stars{font-size:14px;}
+.g-menubtn{font-size:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#C8B6FF;cursor:pointer;padding:4px 10px;font-family:'Nunito',sans-serif;font-weight:700;transition:background .15s;}
+.g-menubtn:active{background:rgba(255,255,255,.2);}
+
+/* World container fills remaining height */
+#worldWrap{position:relative;flex:1;width:100%;overflow:hidden;touch-action:none;}
+#gameCanvas{display:block;position:absolute;image-rendering:pixelated;image-rendering:crisp-edges;touch-action:none;}
+
+/* ── DIALOGUE ── */
+#dlg{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(13,6,24,.97),rgba(8,3,16,1));border-top:3px solid #7c3aed;padding:14px 14px 10px;transform:translateY(100%);transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:50;max-height:58%;overflow-y:auto;}
+#dlg.open{transform:translateY(0);}
+.dlg-who{font-family:'Press Start 2P',monospace;font-size:8px;color:#FFD700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.dlg-passage{background:rgba(255,255,255,.05);border-left:3px solid #7c3aed;border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:10px;font-size:13px;color:#E8D5FF;line-height:1.7;font-weight:700;}
+.dlg-q{font-family:'Press Start 2P',monospace;font-size:8px;color:#FFD700;margin-bottom:10px;text-align:center;line-height:1.6;}
+.dlg-choices{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;}
+.c-btn{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:10px 8px;border:none;border-radius:10px;cursor:pointer;color:#fff;transition:transform .1s;line-height:1.3;}
+.c-btn:active{transform:scale(.95);}
+.c-a{background:#1d4ed8;box-shadow:0 3px 0 #1e3a8a;}
+.c-b{background:#15803d;box-shadow:0 3px 0 #14532d;}
+.c-c{background:#7e22ce;box-shadow:0 3px 0 #4c1d95;}
+.c-d{background:#b91c1c;box-shadow:0 3px 0 #7f1d1d;}
+.c-btn.correct{background:#065f46!important;box-shadow:0 0 20px #10b981!important;animation:cpop .3s;}
+.c-btn.wrong{background:#7f1d1d!important;animation:cshake .3s;}
+@keyframes cpop{0%{transform:scale(.9)}70%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes cshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.dlg-ex{font-size:12px;color:#bbf7d0;font-weight:700;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:8px;padding:8px 10px;margin-bottom:8px;display:none;line-height:1.5;}
+.dlg-ex.bad{color:#fca5a5;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);}
+.dlg-ex.show{display:block;animation:slideUp .3s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.dlg-next{width:100%;font-family:'Press Start 2P',monospace;font-size:9px;padding:12px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:8px;cursor:pointer;box-shadow:0 4px 0 #3b1a8a;display:none;}
+.dlg-next.show{display:block;}
+
+/* ── D-PAD ── */
+#dpad{position:absolute;bottom:12px;left:10px;display:grid;grid-template-columns:repeat(3,54px);grid-template-rows:repeat(3,54px);gap:5px;z-index:40;opacity:.92;touch-action:none;}
+.dp{background:rgba(124,58,237,.4);border:2px solid rgba(124,58,237,.7);border-radius:12px;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:none;transition:background .08s;-webkit-user-select:none;}
+.dp:active,.dp.on{background:rgba(124,58,237,.8);}
+.dp-mid{color:#7c3aed;cursor:default;font-size:14px;}
+.dp-mid:active{background:rgba(124,58,237,.4)!important;}
+@media(hover:hover) and (pointer:fine) and (min-width:900px){#dpad{display:none;}}
+
+/* ── ROOM CLEAR POPUP ── */
+#popup{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:linear-gradient(135deg,#1a1040,#2d1b69);border:3px solid #FFD700;border-radius:20px;padding:24px 28px;text-align:center;z-index:100;transition:transform .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 0 60px #FFD70044;min-width:240px;}
+#popup.show{transform:translate(-50%,-50%) scale(1);}
+.pu-emoji{font-size:50px;margin-bottom:8px;}
+.pu-title{font-family:'Press Start 2P',monospace;font-size:11px;color:#FFD700;margin-bottom:6px;}
+.pu-sub{font-size:13px;color:#C8B6FF;margin-bottom:14px;font-weight:700;}
+.pu-stars{font-size:28px;margin-bottom:16px;}
+.pu-btn{font-family:'Press Start 2P',monospace;font-size:9px;padding:12px 24px;background:#FFD700;color:#1a1040;border:none;border-radius:8px;cursor:pointer;box-shadow:0 4px 0 #b8860b;}
+
+/* ── TOAST ── */
+#toast{position:absolute;top:10px;left:50%;transform:translateX(-50%) scale(0);background:rgba(30,18,60,.97);border:2px solid #7c3aed;border-radius:20px;padding:8px 18px;font-family:'Press Start 2P',monospace;font-size:8px;color:#fff;z-index:200;white-space:nowrap;transition:transform .2s;pointer-events:none;}
+#toast.show{transform:translateX(-50%) scale(1);}
+
+/* ── END SCREEN ── */
+#endScreen{background:radial-gradient(ellipse at center,#2d1b69 0%,#0d0618 70%);text-align:center;padding:30px;}
+.e-emoji{font-size:80px;margin-bottom:16px;}
+.e-title{font-family:'Press Start 2P',monospace;font-size:clamp(12px,3vw,18px);color:#FFD700;margin-bottom:8px;line-height:1.6;}
+.e-sub{font-size:14px;color:#C8B6FF;margin-bottom:20px;font-weight:700;line-height:1.7;white-space:pre-line;}
+.e-stars{font-size:36px;margin-bottom:20px;}
+.e-stats{display:flex;gap:14px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;}
+.e-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:12px 18px;}
+.e-val{font-family:'Press Start 2P',monospace;font-size:16px;color:#FFD700;}
+.e-lbl{font-size:11px;color:#a78bfa;margin-top:4px;}
+.e-btn{font-family:'Press Start 2P',monospace;font-size:10px;padding:16px 32px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:10px;cursor:pointer;box-shadow:0 6px 0 #3b1a8a;}
+</style>
+</head>
+<body>
+
+<!-- TITLE -->
+<div id="titleScreen" class="screen active">
+  <div id="tStars"></div>
+  <div class="t-hero">🧙‍♂️</div>
+  <div class="t-title">READ<br>QUEST</div>
+  <div class="t-sub">✨ The Lost Library ✨</div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <button class="t-btn" onclick="startGame()">▶ START QUEST</button>
+    <button class="t-btn" onclick="loadGame()" style="background:linear-gradient(135deg,#065f46,#047857);box-shadow:0 6px 0 #064e3b,0 0 24px #10b98188;">📂 LOAD SAVE</button>
+    <button onclick="showHow()" style="font-family:'Press Start 2P',monospace;font-size:clamp(8px,1.8vw,11px);padding:12px 28px;background:rgba(255,255,255,.06);border:1.5px solid rgba(167,139,250,.35);color:#a78bfa;border-radius:8px;cursor:pointer;transition:background .2s;">❓ HOW TO PLAY</button>
+  </div>
+  <p class="t-hint">Arrow keys / WASD or D-Pad to move</p>
+  <p id="titleSaveInfo" style="font-size:10px;color:#6b5a9a;margin-top:8px;font-family:Nunito,sans-serif;font-weight:700;"></p>
+</div>
+
+<!-- HOW TO PLAY -->
+<div id="howScreen" class="screen">
+  <div class="how-title">HOW TO PLAY</div>
+  <div class="how-sub">📖 ReadQuest: The Lost Library</div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-icon">🧙‍♂️</div>
+      <div class="how-text">
+        <div class="how-label">MOVE YOUR HERO</div>
+        <div class="how-desc">Use <b>Arrow Keys</b> or <b>WASD</b> on keyboard. On mobile, tap the <b>D-Pad</b> buttons on screen to walk around the dungeon.</div>
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🟢</div>
+      <div class="how-text">
+        <div class="how-label">FIGHT ENEMIES</div>
+        <div class="how-desc">Walk into an enemy to battle it! A story appears — <b>read it carefully</b>, then pick the correct answer to defeat the enemy.</div>
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🔒</div>
+      <div class="how-text">
+        <div class="how-label">UNLOCK DOORS</div>
+        <div class="how-desc">Every locked door has a <b>scroll or book</b> to read. Answer the question correctly to open the door and move forward!</div>
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🪜</div>
+      <div class="how-text">
+        <div class="how-label">FIND THE STAIRS</div>
+        <div class="how-desc">After defeating all enemies <b>and</b> opening the door, stairs appear. Walk to them to go to the next room!</div>
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🎁</div>
+      <div class="how-text">
+        <div class="how-label">OPEN CHESTS</div>
+        <div class="how-desc">Some rooms have treasure chests 🎁. Walk into one to open it — it restores <b>1 heart ❤️</b> of your health!</div>
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">❤️</div>
+      <div class="how-text">
+        <div class="how-label">WATCH YOUR HP</div>
+        <div class="how-desc">You start with <b>3 hearts</b>. Wrong answers cost you 1 heart. If all hearts are gone — <b>Game Over!</b> Read carefully!</div>
+      </div>
+    </div>
+  </div>
+  <div class="how-tip">
+    <span>💡 PRO TIP</span><br>
+    Read the whole passage before looking at the choices.<br>The answer is always hidden somewhere in the text!
+  </div>
+  <div class="how-btns">
+    <button class="how-back" onclick="showTitle()">◀ BACK</button>
+    <button class="how-start" onclick="startGame()">▶ START QUEST</button>
+  </div>
+</div>
+
+<!-- GAME -->
+<div id="gameScreen" class="screen">
+  <div class="g-hud">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="g-name">HERO</div>
+      <div class="g-hearts" id="hearts"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="g-stars" id="hudStars">⭐⭐⭐</div>
+      <div class="g-floor" id="hudFloor">FLOOR 1</div>
+      <button class="g-menubtn" onclick="saveGame()" title="Save">💾</button>
+      <button class="g-menubtn" onclick="loadGame()" title="Load">📂</button>
+      <button class="g-menubtn" onclick="showTitle()">✕</button>
+    </div>
+  </div>
+  <div id="worldWrap">
+    <canvas id="gameCanvas"></canvas>
+    <div id="dpad">
+      <div></div><div class="dp" data-dir="up">▲</div><div></div>
+      <div class="dp" data-dir="left">◀</div><div class="dp dp-mid">✦</div><div class="dp" data-dir="right">▶</div>
+      <div></div><div class="dp" data-dir="down">▼</div><div></div>
+    </div>
+    <div id="dlg">
+      <div class="dlg-who"><span id="dlgIcon">📜</span><span id="dlgName">Scroll</span></div>
+      <div class="dlg-passage" id="dlgPassage"></div>
+      <div class="dlg-q" id="dlgQ"></div>
+      <div class="dlg-choices" id="dlgChoices"></div>
+      <div class="dlg-ex" id="dlgEx"></div>
+      <button class="dlg-next" id="dlgNext" onclick="onNext()">Continue ▶</button>
+    </div>
+    <div id="popup">
+      <div class="pu-emoji" id="puEmoji">🎉</div>
+      <div class="pu-title">ROOM CLEARED!</div>
+      <div class="pu-sub" id="puSub">Great reading!</div>
+      <div class="pu-stars" id="puStars">⭐⭐⭐</div>
+      <button class="pu-btn" onclick="nextRoom()">Next Room ▶</button>
+    </div>
+    <div id="toast"></div>
+  </div>
+</div>
+
+<!-- END -->
+<div id="endScreen" class="screen">
+  <div class="e-emoji" id="eEmoji">🏆</div>
+  <div class="e-title" id="eTitle">QUEST COMPLETE!</div>
+  <div class="e-sub" id="eSub">You rescued the Lost Library!</div>
+  <div class="e-stars" id="eStars">⭐⭐⭐</div>
+  <div class="e-stats" id="eStats"></div>
+  <button class="e-btn" onclick="showTitle()">▶ PLAY AGAIN</button>
+</div>
+
+<script>
+'use strict';
+// ═══ CONTENT ═══
+const CONTENT = [
+  {id:'f1r1a',icon:'🟢',name:'Slime Guard',      p:"The green slime lived by the old gate. It loved to eat mud pies and sleep in puddles. When it woke up, it always said hello to the frogs.",q:"What did the slime love to eat?",o:["Apples","Mud pies","Cheese","Flowers"],a:1,ex:"The passage says the slime loved to eat mud pies."},
+  {id:'f1r1b',icon:'🟢',name:'Baby Slime',       p:"The baby slime was blue. It was very small and shy. Every night it glowed softly in the dark to help the bugs find their way home.",q:"What color was the baby slime?",o:["Green","Purple","Blue","Red"],a:2,ex:"The passage says the baby slime was blue."},
+  {id:'f1r1d',icon:'📜',name:'Stone Door',        p:"The stone door has a message: 'Only those who know the magic word may pass. The magic word is the name of the biggest star in our sky.'",q:"What is needed to open the door?",o:["A key","The magic word","Gold coins","A spell book"],a:1,ex:"The carving says only those who know the magic word may pass."},
+  {id:'f1r2a',icon:'👺',name:'Cave Goblin',       p:"The cave goblin collected shiny things. He had buttons, coins, shells, and one special blue marble. He kept his treasures in a red bucket by his bed.",q:"Where did the goblin keep his treasures?",o:["Under his pillow","In a box","In a red bucket","On a shelf"],a:2,ex:"The passage says he kept his treasures in a red bucket by his bed."},
+  {id:'f1r2b',icon:'👺',name:'Goblin Scout',      p:"The goblin scout was small but fast. She could run across the cave in ten seconds. Her job was to warn the other goblins if strangers came near.",q:"What was the goblin scout's job?",o:["To cook food","To warn others about strangers","To collect coins","To sleep all day"],a:1,ex:"Her job was to warn the other goblins if strangers came near."},
+  {id:'f1r2d',icon:'📖',name:'Ancient Book',      p:"An old book reads: 'Dragons are reptiles. They have scales, wings, and breathe fire. Most dragons live in mountains or deep caves.'",q:"Where do most dragons live?",o:["In the ocean","Under the ground","In mountains or caves","In forests"],a:2,ex:"The book says most dragons live in mountains or deep caves."},
+  {id:'f2r1a',icon:'🍄',name:'Mushroom Sprite',  p:"Mushroom sprites are tiny fairies that live inside big mushrooms. They sleep during the day and dance at night. They love the sound of rain on their mushroom homes.",q:"When do mushroom sprites sleep?",o:["At night","During the day","In the morning","Never"],a:1,ex:"The passage says they sleep during the day and dance at night."},
+  {id:'f2r1b',icon:'🍄',name:'Red Cap',           p:"The red cap mushroom sprite was the leader. She wore a bright red hat that matched her mushroom home. She made the rules for all the other sprites.",q:"What made the red cap sprite special?",o:["She was the tallest","She was the leader","She could fly fastest","She was invisible"],a:1,ex:"The passage says she was the leader who made the rules."},
+  {id:'f2r1d',icon:'🌿',name:'Vine Gate',         p:"A poem on the vine gate: 'Bees are busy every day. They collect nectar from flowers to make honey. Without bees, many flowers would not grow.'",q:"What do bees collect from flowers?",o:["Water","Seeds","Nectar","Pollen"],a:2,ex:"The poem says bees collect nectar from flowers to make honey."},
+  {id:'f2r2a',icon:'🔥',name:'Fire Sprite',       p:"Fire sprites live near volcanoes. Their skin is orange and they have tiny flames for hair. They only burn things by accident when they sneeze.",q:"How do fire sprites accidentally burn things?",o:["By touching them","When they laugh","When they sneeze","When they jump"],a:2,ex:"The passage says they only burn things by accident when they sneeze."},
+  {id:'f2r2b',icon:'🔥',name:'Ember Wisp',        p:"Ember wisps float above the fire bridge. They are small balls of light. They are not dangerous if you walk slowly and quietly, but they chase you if you run.",q:"What should you do to stay safe near ember wisps?",o:["Run fast","Jump high","Walk slowly and quietly","Shout loudly"],a:2,ex:"The passage says they are not dangerous if you walk slowly and quietly."},
+  {id:'f2r2d',icon:'🪨',name:'Fire Tablet',       p:"A stone tablet says: 'The sun is a star. It gives us light and warmth. The sun is so big that one million Earths could fit inside it.'",q:"How many Earths could fit inside the sun?",o:["One thousand","One hundred","One million","One billion"],a:2,ex:"The tablet says one million Earths could fit inside the sun."},
+  {id:'f3r1a',icon:'🦅',name:'Storm Eagle',       p:"Storm eagles are giant birds that live at the top of tall mountains. They can see a tiny mouse from two kilometres away. They make nests from branches and lightning-struck wood.",q:"What do storm eagles use to make their nests?",o:["Grass and leaves","Branches and lightning-struck wood","Mud and stones","Feathers and wool"],a:1,ex:"The passage says they make nests from branches and lightning-struck wood."},
+  {id:'f3r1b',icon:'🦅',name:'Wing Guard',        p:"The wing guard eagle stood at the tower entrance. It would let anyone pass who answered its riddle: 'I have hands but cannot clap. What am I?' The answer is a clock.",q:"What is the answer to the wing guard's riddle?",o:["A glove","A statue","A clock","A tree"],a:2,ex:"The passage tells us the answer is a clock."},
+  {id:'f3r1d',icon:'⚡',name:'Thunder Scroll',    p:"The scroll reads: 'Thunder and lightning happen together. Lightning is electricity in the sky. Thunder is the loud sound it makes. Light travels faster than sound, so we see lightning before we hear thunder.'",q:"Why do we see lightning before we hear thunder?",o:["Thunder is quieter","Lightning is brighter","Light travels faster than sound","Thunder comes later"],a:2,ex:"The scroll says light travels faster than sound, so we see lightning first."},
+  {id:'f3r2a',icon:'🧿',name:'Shadow Wisp',       p:"Shadow wisps are made of dark magic. They drift through rooms looking for books to steal. They cannot speak but hum a low, spooky tune as they float past.",q:"What do shadow wisps look for?",o:["Food","Books to steal","Sleeping children","Bright lights"],a:1,ex:"The passage says they drift through rooms looking for books to steal."},
+  {id:'f3r2b',icon:'🧿',name:'Dark Tome',         p:"The dark tome is a flying book filled with bad spells. It was locked in the library for one hundred years. It can only be stopped by reading the words on its last page out loud.",q:"How long was the dark tome locked in the library?",o:["Ten years","Fifty years","One hundred years","One thousand years"],a:2,ex:"The passage says it was locked in the library for one hundred years."},
+  {id:'f3r2d',icon:'✨',name:'Final Crystal',     p:"The crystal glows: 'To save the library, you must be brave and kind. Brave means doing hard things even when you are scared. Kind means helping others without being asked.'",q:"What does brave mean, according to the crystal?",o:["Being very strong","Never feeling scared","Doing hard things even when scared","Running away from danger"],a:2,ex:"The crystal says brave means doing hard things even when you are scared."},
+];
+function getC(id){ return CONTENT.find(c=>c.id===id); }
+
+// ═══ FLOOR DEFINITIONS ═══
+// Each room: { name, palette, playerStart:{c,r}, enemies:[{id,c,r}], doorPos:{c,r}, stairPos:{c,r}, chestPos, finalRoom, walls:[[r,c],...] }
+const ROOMS = [
+  // FLOOR 1 ROOM 1
+  { name:"Mossy Gate", floor:0,
+    walls: buildWallsBasic(16,12, [[3,4],[3,12],[7,7]]), // extra interior walls
+    playerStart:{c:7,r:5},
+    enemies:[{id:'f1r1a',c:4,r:2},{id:'f1r1b',c:11,r:7}],
+    doorPos:{c:7,r:11}, stairPos:{c:7,r:11},
+    chestPos:{c:13,r:2}, door:'f1r1d', finalRoom:false },
+  // FLOOR 1 ROOM 2
+  { name:"Crystal Cave", floor:0,
+    walls: buildWallsBasic(16,12,[]),
+    playerStart:{c:7,r:1},
+    enemies:[{id:'f1r2a',c:4,r:4},{id:'f1r2b',c:11,r:7}],
+    doorPos:{c:14,r:11}, stairPos:{c:14,r:11},
+    chestPos:null, door:'f1r2d', finalRoom:false },
+  // FLOOR 2 ROOM 1
+  { name:"Whispering Woods", floor:1,
+    walls: buildWallsBasic(16,12,[[7,3],[7,4],[7,10],[7,11]]),
+    playerStart:{c:7,r:5},
+    enemies:[{id:'f2r1a',c:3,r:3},{id:'f2r1b',c:12,r:8}],
+    doorPos:{c:7,r:11}, stairPos:{c:7,r:11},
+    chestPos:{c:2,r:9}, door:'f2r1d', finalRoom:false },
+  // FLOOR 2 ROOM 2
+  { name:"Fire Bridge", floor:1,
+    walls: buildWallsBasic(16,12,[[3,2],[3,13],[8,2],[8,13]]),
+    playerStart:{c:7,r:1},
+    enemies:[{id:'f2r2a',c:5,r:5},{id:'f2r2b',c:10,r:6}],
+    doorPos:{c:14,r:11}, stairPos:{c:14,r:11},
+    chestPos:null, door:'f2r2d', finalRoom:false },
+  // FLOOR 3 ROOM 1
+  { name:"Sky Tower", floor:2,
+    walls: buildWallsBasic(16,12,[[2,3],[2,12],[9,3],[9,12]]),
+    playerStart:{c:7,r:5},
+    enemies:[{id:'f3r1a',c:5,r:3},{id:'f3r1b',c:12,r:4}],
+    doorPos:{c:7,r:11}, stairPos:{c:7,r:11},
+    chestPos:{c:14,r:9}, door:'f3r1d', finalRoom:false },
+  // FLOOR 3 ROOM 2 (FINAL)
+  { name:"Lost Library", floor:2,
+    walls: buildWallsBasic(16,12,[]),
+    playerStart:{c:7,r:1},
+    enemies:[{id:'f3r2a',c:3,r:5},{id:'f3r2b',c:12,r:5}],
+    doorPos:{c:7,r:11}, stairPos:{c:7,r:11},
+    chestPos:null, door:'f3r2d', finalRoom:true },
+];
+
+function buildWallsBasic(cols,rows,extra){
+  // Border walls + optional interior
+  const w=[];
+  for(let c=0;c<cols;c++){ w.push([0,c]); w.push([rows-1,c]); }
+  for(let r=1;r<rows-1;r++){ w.push([r,0]); w.push([r,cols-1]); }
+  extra.forEach(([r,c])=>w.push([r,c]));
+  return w;
+}
+
+// ═══ CANVAS ═══
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const COLS=16, ROWS=12;
+let TILE=40;
+let wallSet; // Set of "r,c" strings for fast lookup
+
+const PALETTES=[
+  {floor:'#1e1235',wall:'#0a0412',wall2:'#251550',door:'#8b5e3c',stair:'#ffd700'},
+  {floor:'#0f2820',wall:'#071510',wall2:'#122515',door:'#5a7a3c',stair:'#ffd700'},
+  {floor:'#18102a',wall:'#0e0818',wall2:'#1e1435',door:'#7060c0',stair:'#ffd700'},
+];
+
+// ═══ GAME STATE ═══
+const G={
+  roomIdx:0, hp:3, maxHp:3,
+  correct:0, wrong:0, stars:0, roomsCleared:0,
+  px:0, py:0,          // player tile position
+  enemies:[],           // [{id,c,r,defeated}]
+  doorOpen:false,
+  chestOpened:false,
+  scrollRead:false,
+  busy:false,
+  dlgOpen:false,
+  curContent:null, curEnemy:null, curType:null,
+  wrongCount:0,
+  rCorrect:0, rWrong:0,
+};
+
+function curRoom(){ return ROOMS[G.roomIdx]; }
+
+function resizeCanvas(){
+  const wrap=document.getElementById('worldWrap');
+  const w=wrap.clientWidth||window.innerWidth;
+  const h=wrap.clientHeight||(window.innerHeight-50);
+  const tw=Math.floor(w/COLS);
+  const th=Math.floor(h/ROWS);
+  TILE=Math.max(20, Math.min(tw,th,56));
+  canvas.width=COLS*TILE;
+  canvas.height=ROWS*TILE;
+  canvas.style.left=Math.floor((w-canvas.width)/2)+'px';
+  canvas.style.top=Math.floor((h-canvas.height)/2)+'px';
+  drawRoom();
+}
+
+// ═══ DRAW ═══
+function drawRoom(){
+  const rm=curRoom();
+  const pal=PALETTES[rm.floor];
+  ctx.fillStyle=pal.wall; ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Floor tiles
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      const isWall=wallSet.has(r+','+c);
+      const x=c*TILE, y=r*TILE;
+      if(isWall){
+        ctx.fillStyle=pal.wall; ctx.fillRect(x,y,TILE,TILE);
+        ctx.fillStyle=pal.wall2; ctx.fillRect(x+2,y+2,TILE-4,TILE-4);
+        ctx.fillStyle='rgba(255,255,255,.04)'; ctx.fillRect(x,y,TILE,3);
+      } else {
+        ctx.fillStyle=pal.floor; ctx.fillRect(x,y,TILE,TILE);
+        ctx.strokeStyle='rgba(255,255,255,.03)'; ctx.strokeRect(x+.5,y+.5,TILE-1,TILE-1);
+      }
+    }
+  }
+
+  // Chest
+  if(rm.chestPos){
+    drawE(G.chestOpened?'📦':'🎁', rm.chestPos.c, rm.chestPos.r);
+  }
+
+  // Door & scroll/book
+  const dp=rm.doorPos;
+  const allDeadForDoor=G.enemies.every(e=>e.defeated);
+  if(G.doorOpen){
+    ctx.fillStyle=pal.floor; ctx.fillRect(dp.c*TILE,dp.r*TILE,TILE,TILE);
+    drawE('🚪',dp.c,dp.r,0.8);
+  } else {
+    ctx.fillStyle=pal.door; ctx.fillRect(dp.c*TILE,dp.r*TILE,TILE,TILE);
+    ctx.fillStyle='rgba(0,0,0,.5)'; ctx.fillRect(dp.c*TILE+3,dp.r*TILE+3,TILE-6,TILE-6);
+    drawE('🔒',dp.c,dp.r,0.7);
+  }
+
+  // Scroll/book appears as a glowing item above the door ONLY after all enemies are defeated
+  if(!G.doorOpen && allDeadForDoor){
+    const sc=getC(rm.door);
+    const scrollEmoji=sc?sc.icon:'📜';
+    const sc_c=dp.c, sc_r=Math.max(1,dp.r-1);
+    const grd=ctx.createRadialGradient(sc_c*TILE+TILE/2,sc_r*TILE+TILE/2,2,sc_c*TILE+TILE/2,sc_r*TILE+TILE/2,TILE*0.7);
+    grd.addColorStop(0,'rgba(255,215,0,0.35)');
+    grd.addColorStop(1,'rgba(255,215,0,0)');
+    ctx.fillStyle=grd; ctx.fillRect(sc_c*TILE-TILE*0.3,sc_r*TILE-TILE*0.3,TILE*1.6,TILE*1.6);
+    ctx.save(); ctx.shadowColor='#FFD700'; ctx.shadowBlur=18;
+    drawE(scrollEmoji,sc_c,sc_r,0.88);
+    ctx.restore();
+  }
+
+  // Stair / gem (only shown when door open)
+  if(G.doorOpen){
+    drawE(rm.finalRoom?'💎':'🪜', rm.stairPos.c, rm.stairPos.r);
+  }
+
+  // Enemies
+  G.enemies.forEach(e=>{
+    if(!e.defeated){
+      ctx.save(); ctx.shadowColor='#ef5350'; ctx.shadowBlur=14;
+      drawE(getC(e.id).icon, e.c, e.r);
+      ctx.restore();
+    }
+  });
+
+  // Player
+  ctx.save(); ctx.shadowColor='#4fc3f7'; ctx.shadowBlur=18;
+  drawE('🧙‍♂️', G.px, G.py);
+  ctx.restore();
+}
+
+function drawE(emoji, c, r, scale=1){
+  const sz=Math.max(8, Math.floor(TILE*scale*0.78));
+  ctx.font=sz+'px serif';
+  ctx.textAlign='left'; ctx.textBaseline='top';
+  const ox=(TILE-sz)/2, oy=(TILE-sz)/2;
+  ctx.fillText(emoji, c*TILE+ox, r*TILE+oy);
+}
+
+// ═══ SETUP ROOM ═══
+function setupRoom(){
+  const rm=curRoom();
+  wallSet=new Set(rm.walls.map(([r,c])=>r+','+c));
+  G.doorOpen=false; G.chestOpened=false; G.busy=false; G.scrollRead=false;
+  G.px=rm.playerStart.c; G.py=rm.playerStart.r;
+  G.enemies=rm.enemies.map(e=>({id:e.id,c:e.c,r:e.r,defeated:false}));
+  G.rCorrect=0; G.rWrong=0;
+  updateHUD();
+  resizeCanvas();
+}
+
+// ═══ MOVEMENT ═══
+const DIRS={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]};
+function move(dir){
+  if(G.dlgOpen||G.busy)return;
+  const [dc,dr]=DIRS[dir];
+  const nc=G.px+dc, nr=G.py+dr;
+  if(nc<0||nc>=COLS||nr<0||nr>=ROWS)return;
+
+  const rm=curRoom();
+
+  // Wall?
+  if(wallSet.has(nr+','+nc))return;
+
+  // Enemy?
+  const enemy=G.enemies.find(e=>!e.defeated&&e.c===nc&&e.r===nr);
+  if(enemy){ openDlg(enemy.id,'enemy',enemy); return; }
+
+  // Door?
+  const dp=rm.doorPos;
+  const allDead=G.enemies.every(e=>e.defeated);
+  // Scroll/book tile (one above door) — only walkable after all enemies dead, and only once
+  const sc_r=Math.max(1,dp.r-1);
+  if(nc===dp.c&&nr===sc_r&&!G.doorOpen&&allDead){
+    if(!G.scrollRead){ openDlg(rm.door,'door',null); return; }
+    return; // already read, block walking onto it
+  }
+  if(nc===dp.c&&nr===dp.r){
+    if(!G.doorOpen){
+      if(!allDead){ toast('⚔️ Defeat all enemies first!'); return; }
+      if(!G.scrollRead){ openDlg(rm.door,'door',null); return; }
+      return;
+    }
+    // walk into open door = proceed
+    proceed(); return;
+  }
+
+  // Chest?
+  if(rm.chestPos&&!G.chestOpened&&nc===rm.chestPos.c&&nr===rm.chestPos.r){
+    G.chestOpened=true; G.hp=Math.min(G.hp+1,G.maxHp);
+    toast('💖 Heart found! HP restored!'); updateHUD(); drawRoom(); return;
+  }
+
+  // Stair/gem (only when door open)?
+  if(G.doorOpen&&nc===rm.stairPos.c&&nr===rm.stairPos.r){
+    proceed(); return;
+  }
+
+  G.px=nc; G.py=nr; drawRoom();
+}
+
+// ═══ DIALOGUE ═══
+function openDlg(contentId, type, enemy){
+  const c=getC(contentId); if(!c)return;
+  G.dlgOpen=true; G.curContent=c; G.curType=type; G.curEnemy=enemy; G.wrongCount=0;
+  document.getElementById('dlgIcon').textContent=c.icon;
+  document.getElementById('dlgName').textContent=c.name;
+  document.getElementById('dlgPassage').textContent=c.p;
+  document.getElementById('dlgQ').textContent='❓ '+c.q;
+  document.getElementById('dlgEx').className='dlg-ex';
+  document.getElementById('dlgNext').className='dlg-next';
+  const box=document.getElementById('dlgChoices'); box.innerHTML='';
+  ['c-a','c-b','c-c','c-d'].forEach((cls,i)=>{
+    const b=document.createElement('button');
+    b.className='c-btn '+cls;
+    b.textContent=['A','B','C','D'][i]+'. '+c.o[i];
+    b.onclick=()=>answer(i);
+    box.appendChild(b);
+  });
+  document.getElementById('dlg').classList.add('open');
+}
+
+function answer(idx){
+  const c=G.curContent;
+  const btns=document.querySelectorAll('.c-btn');
+  btns.forEach(b=>b.onclick=null);
+  const ex=document.getElementById('dlgEx');
+  if(idx===c.a){
+    btns[idx].classList.add('correct');
+    G.correct++; G.rCorrect++;
+    ex.textContent='✅ '+c.ex; ex.className='dlg-ex show';
+    toast('✅ Correct! Great reading!');
+    setTimeout(()=>{ closeDlg(); resolveAction(true); },1400);
+  } else {
+    btns[idx].classList.add('wrong');
+    btns[c.a].classList.add('correct');
+    G.wrong++; G.rWrong++; G.wrongCount++;
+    loseHp();
+    if(G.wrongCount>=2){
+      ex.textContent='❌ '+c.ex; ex.className='dlg-ex bad show';
+      document.getElementById('dlgNext').className='dlg-next show';
+    } else {
+      ex.textContent='❌ Try again! Read the passage again carefully.';
+      ex.className='dlg-ex bad show';
+      setTimeout(()=>{
+        btns.forEach((b,i)=>{ if(i!==idx){b.classList.remove('wrong','correct');b.onclick=()=>answer(i);} });
+        ex.className='dlg-ex';
+      },1200);
+    }
+  }
+}
+
+function onNext(){
+  closeDlg(); resolveAction(false);
+}
+function closeDlg(){ G.dlgOpen=false; document.getElementById('dlg').classList.remove('open'); }
+
+function resolveAction(correct){
+  if(G.curType==='enemy'&&G.curEnemy){
+    G.curEnemy.defeated=true;
+    const allDead=G.enemies.every(e=>e.defeated);
+    if(allDead) setTimeout(()=>toast('✨ A scroll appeared! Find and read it!'),400);
+  } else if(G.curType==='door'){
+    G.scrollRead=true;
+    G.doorOpen=true;
+  }
+  drawRoom();
+  // Check if room done
+  const allDead=G.enemies.every(e=>e.defeated);
+  if(allDead&&G.doorOpen) setTimeout(showRoomClear,500);
+}
+
+// ═══ HP ═══
+function loseHp(){
+  G.hp--; updateHUD();
+  if(G.hp<=0) setTimeout(()=>{ closeDlg(); endGame(false); },800);
+}
+
+// ═══ HUD ═══
+function updateHUD(){
+  const hc=document.getElementById('hearts'); hc.innerHTML='';
+  for(let i=0;i<G.maxHp;i++){
+    const h=document.createElement('span');
+    h.className='g-heart'+(i>=G.hp?' lost':'');
+    h.textContent='❤️'; hc.appendChild(h);
+  }
+  document.getElementById('hudFloor').textContent='FLOOR '+(curRoom().floor+1);
+  const wr=G.wrong/(G.correct+G.wrong||1);
+  document.getElementById('hudStars').textContent=wr<.2?'⭐⭐⭐':wr<.5?'⭐⭐':'⭐';
+}
+
+// ═══ ROOM CLEAR ═══
+function showRoomClear(){
+  const wr=G.rWrong/(G.rCorrect+G.rWrong||1);
+  const s=wr<.1?3:wr<.4?2:1;
+  G.stars+=s; G.roomsCleared++;
+  document.getElementById('puEmoji').textContent=s===3?'🎉':s===2?'⭐':'👍';
+  document.getElementById('puSub').textContent=['Keep trying! 💪','Good job! 😊','Amazing! 🌟'][s-1];
+  document.getElementById('puStars').textContent='⭐'.repeat(s)+'☆'.repeat(3-s);
+  document.getElementById('popup').classList.add('show');
+}
+
+function nextRoom(){
+  document.getElementById('popup').classList.remove('show');
+  G.roomIdx++;
+  if(G.roomIdx>=ROOMS.length){ endGame(true); return; }
+  G.rCorrect=0; G.rWrong=0;
+  setupRoom();
+}
+
+function proceed(){
+  if(curRoom().finalRoom){ endGame(true); return; }
+  showRoomClear();
+}
+
+// ═══ END ═══
+function endGame(win){
+  const total=G.correct+G.wrong;
+  const acc=total?Math.round(G.correct/total*100):100;
+  document.getElementById('eEmoji').textContent=win?'🏆':'💀';
+  document.getElementById('eTitle').textContent=win?'QUEST COMPLETE!':'GAME OVER';
+  document.getElementById('eSub').textContent=win?'You rescued the Lost Library!\nAll the magical books are safe!':'The library needs a brave reader!\nTry again — you can do it!';
+  document.getElementById('eStars').textContent=win?(G.stars>=15?'⭐⭐⭐':G.stars>=10?'⭐⭐':'⭐'):'☆☆☆';
+  document.getElementById('eStats').innerHTML=`
+    <div class="e-stat"><div class="e-val">${G.correct}</div><div class="e-lbl">Correct</div></div>
+    <div class="e-stat"><div class="e-val">${acc}%</div><div class="e-lbl">Accuracy</div></div>
+    <div class="e-stat"><div class="e-val">${G.roomsCleared}</div><div class="e-lbl">Rooms</div></div>
+    ${win?`<div class="e-stat"><div class="e-val">${G.stars}</div><div class="e-lbl">Stars</div></div>`:''}
+  `;
+  showScreen('endScreen');
+}
+
+// ═══ TOAST ═══
+let toastT;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// ═══ SCREENS ═══
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function showTitle(){ showScreen('titleScreen'); }
+function showHow(){ showScreen('howScreen'); }
+function startGame(){
+  Object.assign(G,{roomIdx:0,hp:3,maxHp:3,correct:0,wrong:0,stars:0,roomsCleared:0,dlgOpen:false,doorOpen:false,busy:false,rCorrect:0,rWrong:0});
+  showScreen('gameScreen');
+  // Wait for screen to be visible before sizing
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ setupRoom(); }); });
+}
+
+// ═══ SAVE / LOAD ═══
+function saveGame(){
+  if(!document.getElementById('gameScreen').classList.contains('active')){ toast('⚠️ Start a game first!'); return; }
+  const save={
+    roomIdx:G.roomIdx, hp:G.hp, maxHp:G.maxHp,
+    correct:G.correct, wrong:G.wrong, stars:G.stars, roomsCleared:G.roomsCleared,
+    px:G.px, py:G.py,
+    doorOpen:G.doorOpen, chestOpened:G.chestOpened, scrollRead:G.scrollRead,
+    rCorrect:G.rCorrect, rWrong:G.rWrong,
+    enemies:G.enemies.map(e=>({id:e.id,c:e.c,r:e.r,defeated:e.defeated})),
+    savedAt:Date.now()
+  };
+  try{
+    localStorage.setItem('readquest_save', JSON.stringify(save));
+    toast('💾 Game saved!');
+  } catch(err){ toast('❌ Save failed!'); }
+}
+
+function loadGame(){
+  try{
+    const raw=localStorage.getItem('readquest_save');
+    if(!raw){ toast('📂 No save found!'); return; }
+    const save=JSON.parse(raw);
+    Object.assign(G,{
+      roomIdx:save.roomIdx, hp:save.hp, maxHp:save.maxHp,
+      correct:save.correct, wrong:save.wrong, stars:save.stars, roomsCleared:save.roomsCleared,
+      px:save.px, py:save.py,
+      doorOpen:save.doorOpen, chestOpened:save.chestOpened||false,
+      scrollRead:save.scrollRead||false,
+      rCorrect:save.rCorrect, rWrong:save.rWrong,
+      dlgOpen:false, busy:false, curContent:null, curEnemy:null, curType:null, wrongCount:0
+    });
+    showScreen('gameScreen');
+    requestAnimationFrame(()=>{ requestAnimationFrame(()=>{
+      const rm=curRoom();
+      wallSet=new Set(rm.walls.map(([r,c])=>r+','+c));
+      G.enemies=save.enemies.map(e=>({id:e.id,c:e.c,r:e.r,defeated:e.defeated}));
+      updateHUD(); resizeCanvas();
+      const d=new Date(save.savedAt);
+      toast('📂 Loaded! Saved '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}));
+    }); });
+  } catch(err){ toast('❌ Load failed!'); }
+}
+
+// ═══ KEYBOARD ═══
+const KMAP={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right',W:'up',S:'down',A:'left',D:'right'};
+document.addEventListener('keydown',e=>{ const d=KMAP[e.key]; if(d){e.preventDefault();move(d);} });
+
+// ═══ D-PAD ═══
+document.querySelectorAll('.dp[data-dir]').forEach(btn=>{
+  const dir=btn.dataset.dir; let iv;
+  const go=(e)=>{ e.preventDefault(); e.stopPropagation(); btn.classList.add('on'); move(dir); clearInterval(iv); iv=setInterval(()=>move(dir),170); };
+  const stop=(e)=>{ if(e) e.preventDefault(); btn.classList.remove('on'); clearInterval(iv); };
+  btn.addEventListener('touchstart',go,{passive:false});
+  btn.addEventListener('touchend',stop,{passive:false});
+  btn.addEventListener('touchcancel',stop,{passive:false});
+  btn.addEventListener('contextmenu',e=>e.preventDefault(),{passive:false});
+  btn.addEventListener('mousedown',go); btn.addEventListener('mouseup',stop); btn.addEventListener('mouseleave',stop);
+});
+
+// ═══ RESIZE ═══
+window.addEventListener('resize',()=>{ if(document.getElementById('gameScreen').classList.contains('active')) resizeCanvas(); });
+
+// ═══ TITLE STARS ═══
+(()=>{
+  const c=document.getElementById('tStars');
+  for(let i=0;i<50;i++){
+    const s=document.createElement('div'); s.className='t-star';
+    const sz=1+Math.random()*2.5;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;position:absolute;animation-delay:${Math.random()*2}s;animation-duration:${1.5+Math.random()*2}s;`;
+    c.appendChild(s);
+  }
+})();
+
+window.startGame=startGame; window.showTitle=showTitle; window.showHow=showHow; window.nextRoom=nextRoom; window.onNext=onNext; window.saveGame=saveGame; window.loadGame=loadGame;
+
+// ═══ SERVICE WORKER (PWA offline) ═══
+(function(){
+  // Use base64 data URI — works from any file:// or sandboxed context
+  const SW_URI = 'data:text/javascript;base64,Y29uc3QgQ0FDSEUgPSAncmVhZHF1ZXN0LXYyJzsKY29uc3QgRk9OVF9VUkxTID0gWwogICdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVByZXNzK1N0YXJ0KzJQJmZhbWlseT1OdW5pdG86d2dodEA3MDA7ODAwJmRpc3BsYXk9c3dhcCcsCiAgJ2h0dHBzOi8vZm9udHMuZ3N0YXRpYy5jb20vcy9wcmVzc3N0YXJ0MnAvdjE1L2UzdDRldU84VC0yNjdvSUFRQXU2akRReUszblZpdk0ud29mZjInLAogICdodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tL3MvbnVuaXRvL3YyNi9YUlhJM0k2TGkwMUJLb2ZpT2M1d3RsWjJkaThIRE9VaFJUTS53b2ZmMicKXTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZSA9PiB7CiAgc2VsZi5za2lwV2FpdGluZygpOwogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLm9wZW4oQ0FDSEUpLnRoZW4oYyA9PgogICAgICBQcm9taXNlLmFsbChGT05UX1VSTFMubWFwKHUgPT4gYy5hZGQobmV3IFJlcXVlc3QodSx7bW9kZTonbm8tY29ycyd9KSkuY2F0Y2goKCk9Pnt9KSkpCiAgICApCiAgKTsKfSk7CnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBlID0+IHsKICBlLndhaXRVbnRpbChjYWNoZXMua2V5cygpLnRoZW4oa2V5cyA9PgogICAgUHJvbWlzZS5hbGwoa2V5cy5maWx0ZXIoaz0+ayE9PUNBQ0hFKS5tYXAoaz0+Y2FjaGVzLmRlbGV0ZShrKSkpCiAgKSk7CiAgc2VsZi5jbGllbnRzLmNsYWltKCk7Cn0pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZSA9PiB7CiAgZS5yZXNwb25kV2l0aCgKICAgIGNhY2hlcy5tYXRjaChlLnJlcXVlc3QpLnRoZW4oY2FjaGVkID0+IHsKICAgICAgaWYgKGNhY2hlZCkgcmV0dXJuIGNhY2hlZDsKICAgICAgcmV0dXJuIGZldGNoKGUucmVxdWVzdCkudGhlbihyZXNwID0+IHsKICAgICAgICBpZiAocmVzcCAmJiByZXNwLm9rKSB7CiAgICAgICAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihjID0+IGMucHV0KGUucmVxdWVzdCwgcmVzcC5jbG9uZSgpKSk7CiAgICAgICAgfQogICAgICAgIHJldHVybiByZXNwOwogICAgICB9KS5jYXRjaCgoKSA9PiBuZXcgUmVzcG9uc2UoJ09mZmxpbmUgLSBSZWFkUXVlc3QgbmVlZHMgYSBmaXJzdCBjb25uZWN0aW9uIHRvIGNhY2hlIGFzc2V0cy4nLCB7c3RhdHVzOjUwMyxoZWFkZXJzOnsnQ29udGVudC1UeXBlJzondGV4dC9wbGFpbid9fSkpOwogICAgfSkKICApOwp9KTsK';
+
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register(SW_URI, {scope: location.pathname || './'})
+      .then(reg => {
+        console.log('[ReadQuest] SW registered ✓', reg.scope);
+        // Self-cache this page so it survives offline
+        reg.addEventListener('updatefound', ()=>{
+          reg.installing && reg.installing.addEventListener('statechange', ()=>{
+            if(reg.active) caches.open('readquest-v2').then(c => c.put(location.href,
+              new Response(document.documentElement.outerHTML, {headers:{'Content-Type':'text/html'}})));
+          });
+        });
+      })
+      .catch(err => console.warn('[ReadQuest] SW skipped (sandboxed env):', err.message));
+  }
+
+  // ── Add to Home Screen prompt ──
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const hint = document.getElementById('titleSaveInfo');
+    if(hint && !hint.textContent){
+      hint.innerHTML = '<span style="color:#a78bfa;cursor:pointer;" onclick="window.__installPWA&&window.__installPWA()">📲 Tap to install as app</span>';
+    }
+  });
+  window.__installPWA = function(){
+    if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; }); }
+  };
+  window.addEventListener('appinstalled', () => {
+    toast('📲 ReadQuest installed!');
+    deferredPrompt = null;
+  });
+})();
+
+
+// Show save info on title
+(()=>{
+  try{
+    const raw=localStorage.getItem("readquest_save");
+    if(raw){
+      const s=JSON.parse(raw);
+      const d=new Date(s.savedAt);
+      const el=document.getElementById("titleSaveInfo");
+      if(el) el.textContent="💾 Save: Floor "+(s.roomIdx<2?1:s.roomIdx<4?2:3)+" · "+d.toLocaleDateString([],{month:"short",day:"numeric"})+" "+d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
